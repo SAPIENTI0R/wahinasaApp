@@ -22,8 +22,12 @@
 
                 handleUserExists(wpUserData);
 
+            } else if (!wpUserData.scoutingId) {
+                // If there isn't a scouting id present, redirect to add it
+                Toast.show({ text: "You must enter your Scouting ID to use the game" });
+                window.location.href = "/user/?um_action=edit";
             } else {
-                // If the user does not have a firebase id
+                // Create a firebase account for the user
                 console.log('Creating Firebase entry');
                 document.querySelector('#loadingIcon').style.display = 'block';
 
@@ -61,7 +65,7 @@
 
         } catch (error) {
             console.error('Sync failed:', error);
-            Toast.show({ text: error.message });
+            Toast.show({ text: "Error: " + error.message });
         }
     };
 

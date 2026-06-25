@@ -1,6 +1,8 @@
 // Set maximum number of containers
 const {setGlobalOptions} = require("firebase-functions");
-setGlobalOptions({maxInstances: 10});
+setGlobalOptions({
+  maxInstances: 10,
+});
 
 // The Firebase Admin SDK to access Firestore
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
